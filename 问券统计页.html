@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>问答统计分析</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./js/xadmin.js"></script>
+    <script src="./lib/echarts.min.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .wenjuanList {
+            width: 100%;
+        }
+        
+        .wenjuanList .title {
+            width: 100%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 26px;
+            color: #181818;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        
+        .wendaTongji {
+            font-size: 20px;
+            color: #181818;
+            margin-bottom: 20px;
+            text-align: center;
+            box-sizing: border-box;
+            padding-left: 30px;
+        }
+        
+        .wendaTongji span {
+            color: #F74E4E;
+            margin-right: 30px;
+        }
+        
+        .layui-form {
+            /* position: relative;
+            left: 50%;
+            transform: translateX(-50%); */
+        }
+        
+        table.layui-table {
+            width: 450px;
+        }
+        
+        .layui-table td,
+        .layui-table th {
+            text-align: center;
+        }
+        
+        .list {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #F1F1F1;
+            padding-bottom: 30px;
+        }
+        
+        .shujufenxi {
+            /* margin-left: 100px; */
+        }
+        
+        th,
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="x-body">
+        <div class="wenjuanList">
+            <div class="title"> 问卷统计分析</div>
+            <div class="wendaTongji">
+                今日回答数：<span>1</span> 总回答数：
+                <span>1</span>
+            </div>
+            <!-- <table id="demo" lay-filter="test"></table> -->
+            <div class="list">
+                <div class="biaoge">
+                    <div class="wenti">第1题：您的性别是？【单选题】</div>
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="150">
+                            <col width="150">
+                            <col width="150">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>选项</th>
+                                <th>小计</th>
+                                <th>比例</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>A</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>B</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>C</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>D</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">本题有效填写人次：4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="shujufenxi">
+                    <div class="main" style="width: 1000px;height:210px;"></div>
+                </div>
+            </div>
+            <div class="list">
+                <div class="biaoge">
+                    <div class="wenti">第1题：您的性别是？【单选题】</div>
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="150">
+                            <col width="150">
+                            <col width="150">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>选项</th>
+                                <th>小计</th>
+                                <th>比例</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>A</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>B</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>C</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>D</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">本题有效填写人次：4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="shujufenxi">
+                    <div class="main" style="width: 1000px;height:210px;"></div>
+                </div>
+            </div>
+            <div class="list">
+                <div class="biaoge">
+                    <div class="wenti">第1题：您的性别是？【单选题】</div>
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="150">
+                            <col width="150">
+                            <col width="150">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>选项</th>
+                                <th>小计</th>
+                                <th>比例</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>A</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>B</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>C</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>D</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">本题有效填写人次：4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="shujufenxi">
+                    <div class="main" style="width: 1000px;height:210px;"></div>
+                </div>
+            </div>
+            <div class="list">
+                <div class="biaoge">
+                    <div class="wenti">第1题：您的性别是？【单选题】</div>
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="150">
+                            <col width="150">
+                            <col width="150">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>选项</th>
+                                <th>小计</th>
+                                <th>比例</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>A</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>B</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>C</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>D</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">本题有效填写人次：4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="shujufenxi">
+                    <div class="main" style="width: 1000px;height:210px;"></div>
+                </div>
+            </div>
+            <div class="list">
+                <div class="biaoge">
+                    <div class="wenti">第1题：您的性别是？【单选题】</div>
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="150">
+                            <col width="150">
+                            <col width="150">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>选项</th>
+                                <th>小计</th>
+                                <th>比例</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>A</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>B</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>C</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>D</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">本题有效填写人次：4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="shujufenxi">
+                    <div class="main" style="width: 1000px;height:210px;"></div>
+                </div>
+            </div>
+            <div class="list">
+                <div class="biaoge">
+                    <div class="wenti">第1题：您的性别是？【单选题】</div>
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="150">
+                            <col width="150">
+                            <col width="150">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>选项</th>
+                                <th>小计</th>
+                                <th>比例</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>A</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>B</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>C</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>D</td>
+                                <td>1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">本题有效填写人次：4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="shujufenxi">
+                    <div class="main" style="width: 1000px;height:210px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var arr = $(".main");
+
+        function bingzhuangFn(value) {
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init($(".main")[value]);
+
+            // 指定图表的配置项和数据
+            var option = {
+                tooltip: {
+                    trigger: 'item',
+                },
+                legend: {
+                    // orient: 'vertical',
+                    // top: 'middle',
+                    bottom: 0,
+                    left: 'center',
+                    data: ['A.非常好', 'B.还不错', 'C.不满意', 'D.非常不满意', 'E.极度不满意']
+                },
+                series: [{
+                    type: 'pie',
+                    radius: '65%',
+                    center: ['50%', '40%'],
+                    data: [{
+                        value: 1548,
+                        name: 'A.非常好',
+                    }, {
+                        value: 535,
+                        name: 'B.还不错'
+                    }, {
+                        value: 510,
+                        name: 'C.不满意'
+                    }, {
+                        value: 634,
+                        name: 'D.非常不满意'
+                    }, {
+                        value: 735,
+                        name: 'E.极度不满意'
+                    }],
+                }]
+            };
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        };
+        for (var i = 0; i < arr.length; i++) {
+            bingzhuangFn(i);
+        };
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</body>
+
+</html>
